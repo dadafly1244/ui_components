@@ -1,0 +1,151 @@
+.Accordions {
+  --b-line-color: #ccc;
+  --bg-color-light: #eff;
+  --bg-color-sky: #ace;
+
+  .container {
+    border: 1px solid var(--b-line-color);
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+  }
+  .tab {
+    // 타이틀 영역
+    padding: 1rem;
+    border-bottom: 1px solid var(--b-line-color);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      width: 1rem;
+      height: 1rem;
+      background-size: 1rem 1rem;
+      background-image: url('/assets/plus.svg');
+      display: inline-block;
+      margin: 0 0.5rem 0 -0.3rem;
+      transition-property: 'transform';
+      transition-duration: 0.5s;
+    }
+  }
+
+  .description {
+    // 상세내용 영역
+    padding: 1rem;
+    border-bottom: 1px solid var(--b-line-color);
+    background-color: var(--bg-color-light);
+  }
+
+  .item {
+    &.current {
+      .tab {
+        background-color: var(--bg-color-sky);
+
+        &::before {
+          transform: rotate(45deg) scale(1.1);
+        }
+      }
+    }
+  }
+  .item2 {
+    .description {
+      display: none;
+    }
+    &.current {
+      .description {
+        display: block;
+      }
+    }
+  }
+
+  .item3 {
+    overflow: hidden;
+
+    .description {
+      padding: 0 1rem;
+      border-bottom-width: 0;
+      max-height: 0;
+      transition: ease 0.3s;
+    }
+    &.current .description {
+      padding: 1rem;
+      border-bottom-width: 1px;
+      max-height: 300px;
+    }
+  }
+
+  .item5 {
+    overflow: hidden;
+
+    .input {
+      display: none;
+    }
+    .tab {
+      display: block;
+    }
+    .description {
+      padding: 0 1rem;
+      border-bottom-width: 0;
+      max-height: 0;
+      transition: ease 0.3s;
+    }
+    .input:checked {
+      + .tab {
+        background-color: var(--bg-color-sky);
+
+        &::before {
+          content: '-';
+        }
+      }
+      ~ .description {
+        padding: 1rem;
+        border-bottom-width: 1px;
+        max-height: 300px;
+      }
+    }
+  }
+
+  details[open] summary {
+    background-color: var(--bg-color-sky);
+    padding: 1rem;
+    border-bottom-width: 0;
+  }
+
+  details[open] .description {
+    padding: 1rem;
+    border-bottom-width: 0;
+  }
+
+  // summary {
+  //   padding: 1rem;
+  //   border-bottom: 1px solid var(--b-line-color);
+  //   cursor: pointer;
+  // }
+
+  // summary::marker {
+  //   content: '+ ';
+  // }
+  // details[open] summary::marker {
+  //   content: '- ';
+  // }
+}
+
+@keyframes rotate-45-in {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes rotate-45-out {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}

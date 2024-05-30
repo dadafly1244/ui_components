@@ -1,3 +1,12 @@
-const Accordion = () => <div color="red">아코디언</div>
+import cx from './cx'
+import AccordionReactHtmlDesc from './1_AccordionReactHtmlDesc'
 
-export default Accordion
+const Accordions = () => {
+  return (
+    <div className={cx('Accordions')}>
+      <AccordionReactHtmlDesc />
+    </div>
+  )
+}
+
+export default Accordions
