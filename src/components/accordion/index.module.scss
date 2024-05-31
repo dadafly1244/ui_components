@@ -97,7 +97,7 @@
         background-color: var(--bg-color-sky);
 
         &::before {
-          content: '-';
+          transform: rotate(45deg) scale(1.1);
         }
       }
       ~ .description {
